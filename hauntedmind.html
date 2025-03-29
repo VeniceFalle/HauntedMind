@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Interactive Psychological Horror Story</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-content {
+            margin-bottom: 30px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #ff6666;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff0000;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            background-color: #222222;
+            color: white;
+            border: 2px solid #555555;
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #ff6666;
+            transform: scale(1.1);
+        }
+
+        .disturbing {
+            color: #ffcccc;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        /* Scary background effects */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: -1;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #121212;
+            color: #aaaaaa;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-text {
+            font-size: 12px;
+        }
+
+        .footer-link {
+            color: #cccccc;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #ff6666;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <h1>Welcome to the Haunted Mind</h1>
+        <h2>A Psychological Horror Interactive Story</h2>
+
+        <!-- Story content -->
+        <div class="story-content">
+            <p>It's midnight. You awake to a strange sound in the hallway. The cold, eerie silence hangs in the air, thick with dread. Your heart races as the seconds feel like hours. The clock ticks loudly, louder than usual, as if mocking your fear. 
+                <strong>Do you dare to investigate?</strong></p>
+            <div class="button-container">
+                <button onclick="nextPage(1)">Yes, I'll check it out.</button>
+                <button onclick="nextPage(2)">No, I’ll stay in my room.</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">Created with unsettling thoughts by <span class="footer-link">Creative Writing SPA 10</span></p>
+    </footer>
+
+    <script>
+        // Interactive story navigation
+        function nextPage(choice) {
+            let storyContent = document.querySelector('.story-content');
+            let buttonContainer = document.querySelector('.button-container');
+            
+            if (choice === 1) {
+                // Path: Investigate the noise
+                storyContent.innerHTML = `
+                    <p>You step cautiously into the hallway, each step creaking underfoot. The darkness seems to move around you, an unsettling presence just out of sight. 
+                    At the end of the hallway, a door creaks open slightly, revealing an eerie glow from within. You hear whispers... barely audible, like a voice in the back of your mind. 
+                    <span class="disturbing">Something is wrong.</span> Do you enter the room?</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(3)">Yes, I must know what's inside.</button>
+                        <button onclick="nextPage(4)">No, I run back to my room.</button>
+                    </div>
+                `;
+            } else if (choice === 2) {
+                // Path: Stay in the room
+                storyContent.innerHTML = `
+                    <p>You pull the blankets tightly around you, trying to block out the strange noises. The whispers are louder now, almost as if they are coming from inside your mind. 
+                    A cold breath brushes against your neck, sending a chill through your spine. The feeling of being watched overwhelms you. 
+                    <span class="disturbing">You are not alone.</span> Do you turn around?</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(5)">Yes, I look behind me.</button>
+                        <button onclick="nextPage(6)">No, I pretend to sleep, too terrified to move.</button>
+                    </div>
+                `;
+            } else if (choice === 3) {
+                // Path: Enter the room
+                storyContent.innerHTML = `
+                    <p>You push the door open, and a blast of cold air hits you, like stepping into a freezer. The room is empty, except for a large, old mirror covered in strange symbols. 
+                    The whispering intensifies, now louder and more frantic. The air is thick with unease. As you approach the mirror, you see something shifting in the reflection—something... 
+                    <span class="disturbing">not quite you.</span> Do you touch the mirror?</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(7)">Yes, I reach for it.</button>
+                        <button onclick="nextPage(8)">No, I step back and leave.</button>
+                    </div>
+                `;
+            } else if (choice === 4) {
+                // Path: Run back to the room
+                storyContent.innerHTML = `
+                    <p>You turn and sprint back to your room, heart pounding in your chest. The door slams behind you, but the whispers follow, growing louder. 
+                    It’s as if the sound is now inside your head, swirling around you. You turn to find the shadows in your room moving, swirling into one solid form.
+                    <span class="disturbing">You can’t escape.</span> Do you hide under the bed?</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(9)">Yes, I hide under the bed.</button>
+                        <button onclick="nextPage(10)">No, I stand still, waiting for whatever comes next.</button>
+                    </div>
+                `;
+            } else if (choice === 5) {
+                // Path: Look behind
+                storyContent.innerHTML = `
+                    <p>You turn around slowly. And there it is—standing right behind you. A pale, ghastly face, staring into yours. The eyes are wide, bulging, and unblinking. 
+                    Its lips twist into a grotesque smile. You can’t move, can’t speak. The creature leans closer, its breath cold and rancid, filling your senses.
+                    <span class="disturbing">It whispers your name.</span> Do you scream?</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(11)">Yes, I scream.</button>
+                        <button onclick="nextPage(12)">No, I stay silent.</button>
+                    </div>
+                `;
+            } else if (choice === 6) {
+                // Path: Pretend to sleep
+                storyContent.innerHTML = `
+                    <p>You squeeze your eyes shut, pretending to sleep. The whispers fade away, only to be replaced by a soft giggling sound, as if something is toying with you. 
+                    Your body feels heavy, like something is pressing down on you. You feel fingers, icy cold, brushing against your skin.
+                    <span class="disturbing">The thing is in your bed.</span> Do you open your eyes?</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(13)">Yes, I open my eyes.</button>
+                        <button onclick="nextPage(14)">No, I stay still and pray it goes away.</button>
+                    </div>
+                `;
+            } else if (choice === 7) {
+                // Path: Touch the mirror
+                storyContent.innerHTML = `
+                    <p>Your fingers brush against the mirror's surface. A cold shiver runs through your body, and suddenly, you feel the reflection moving. 
+                    The image of you in the mirror smiles, but you didn’t smile. It lifts its hand, matching your own exact movements—too exact. 
+                    <span class="disturbing">It’s not you. It’s something else.</span> The reflection begins to speak in a voice that isn’t yours. 
+                    “You’ve made a mistake,” it whispers. The mirror cracks, the world around you shattering into darkness.</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(15)">Embrace the darkness.</button>
+                    </div>
+                `;
+            } else if (choice === 8) {
+                // Path: Leave the room
+                storyContent.innerHTML = `
+                    <p>You step back, the door slamming shut behind you. The whispers grow louder, more desperate. You feel like something is chasing you, but you can’t see it. 
+                    The house seems to be closing in, the walls shifting, the ceiling growing lower. <span class="disturbing">You’re trapped.</span> A voice echoes from the walls, “You can’t escape.”
+                    The door you came through disappears, replaced by a solid wall. The room is now a maze of twisting corridors.</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(16)">Try to find a way out.</button>
+                    </div>
+                `;
+            } else if (choice === 9) {
+                // Path: Hide under the bed
+                storyContent.innerHTML = `
+                    <p>You crawl under the bed, holding your breath, hoping whatever it is doesn’t notice you. But the floor begins to tremble, the shadows moving toward you. 
+                    Something large and cold touches your hand. <span class="disturbing">A hand? No. It’s something worse.</span> You try to scream, but no sound escapes your mouth. 
+                    The darkness pulls you in, suffocating you.</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(17)">Accept the darkness.</button>
+                    </div>
+                `;
+            } else if (choice === 10) {
+                // Path: Stand still
+                storyContent.innerHTML = `
+                    <p>You stand frozen, unable to move as the shadows close in on you. The feeling of being watched intensifies, and you can feel the cold breath on the back of your neck. 
+                    You try to speak, but your voice is gone. <span class="disturbing">A shadowy figure forms behind you.</span> It reaches out, its touch ice-cold as it wraps around you, pulling you into its endless void.</p>
+                    <div class="button-container">
+                        <button onclick="nextPage(18)">Embrace the void.</button>
+                    </div>
+                `;
+            }
+
+            // Continue adding more paths based on choices...
+        }
+    </script>
+</body>
+
+</html>
